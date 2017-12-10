@@ -582,18 +582,6 @@
 
         <!-- 右边栏 -->
         <div class="fivecol last right-column">
-            <!--
-                <div class="tab tab-light-blue" style="text-align: center;">关注微信</div>
-                <div class="sidebar-box">
-                    <a href="http://m.runoob.com/" target="_blank"> <img src="http://www.runoob.com/wp-content/themes/w3cschool.cc/assets/img/qrcode.jpg" alt="移动版"> </a>
-                    <div class="qqinfo">
-                     <a target="_blank" href="http://jq.qq.com/?_wv=1027&k=dOwwKN" id="qqhref">
-                    <img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="菜鸟家族" title="菜鸟家族"></a>
-                    <span>(群号：<span id="qqid">365967760</span>)</span>
-                    </div>
-
-                </div>
-                -->
             <style>
                 .sidebar-tree .double-li {
                     width: 300px;
@@ -790,10 +778,11 @@
 
 {% endblock %}
 
-<script>
-    var aid = 19213;
 
-    function coll() {
+<script>
+    /*
+    var aid = 19213;
+   function coll() {
         $.post('/wp-content/themes/runoob/option/user/userinfo.php', {
             aid: aid,
             action: "collarticle",
@@ -809,6 +798,7 @@
             alert(data.msg);
         }, 'json');
     }
+*/
 </script>
 
 
@@ -1185,7 +1175,7 @@
         background-repeat: no-repeat;
         background-position: 50% 0
     }
-
+/*
     .cd-form label.cd-username {
         background-image: url("/wp-content/themes/runoob/assets/img/cd-icon-username.svg")
     }
@@ -1197,7 +1187,7 @@
     .cd-form label.cd-password {
         background-image: url("/wp-content/themes/runoob/assets/img/cd-icon-password.svg")
     }
-
+*/
     .cd-form input {
         margin: 0;
         padding: 0;
@@ -1293,7 +1283,7 @@
         height: 40px;
         right: 0;
         top: -40px;
-        background: url("/wp-content/themes/runoob/assets/img/cd-icon-close.svg") no-repeat center center;
+        /*background: url("/wp-content/themes/runoob/assets/img/cd-icon-close.svg") no-repeat center center;*/
         text-indent: 100%;
         white-space: nowrap;
         overflow: hidden
@@ -1401,10 +1391,12 @@
 <script src="/static/js/main.js"></script>
 
 
+<!--
 <div class="__read-mode-title-entry-container__ __read-mode-title-entry-3__"
      style="display: none; left: 302.281px; top: 235px;">
     <iframe class="__read-mode-title-entry-main__ __read-mode-title-entry-3__" frameborder="0" scrolling="no"
             src="./Bootstrap4 教程 _ 菜鸟教程_files/title_entry_3.html"></iframe>
 </div>
+-->
 </body>
 </html>
