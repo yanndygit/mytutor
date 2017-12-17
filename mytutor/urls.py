@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="article.html"), name ="article"),
     url(r'^article/',DirView.as_view(),name="article"),
     url(r'^ueditor/', include('DjangoUeditor.urls')),
+    url(r'^wiki$', TemplateView.as_view(template_name="wiki.html"), name="wiki"),
 
 ]

@@ -47,6 +47,8 @@
                     </div>
                     <div class="article-body">
                         <div class="article-intro" id="content" deep="5">
+                            <h1> <span class="color_h1">{{ article.name }}</span></h1>
+
                             {% autoescape off %}
                             {{ article.detail }}
                             {% endautoescape %}
