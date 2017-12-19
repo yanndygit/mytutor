@@ -1,7 +1,7 @@
 # _*_ coding:utf-8 _*_
 import xadmin
 
-from .models import Article,Dir,Menu
+from .models import Article,Dir,Menu,SubDir
 
 
 class ArticleAdmin(object):
@@ -16,6 +16,10 @@ class DirAdmin(object):
     search_fields = ['name']
     list_filter = ['name']
 
+class SubDirAdmin(object):
+    list_display = ['name']
+    search_fields = ['name']
+    list_filter = ['name']
 
 class MenuAdmin(object):
     list_display = ['name']
@@ -26,4 +30,5 @@ class MenuAdmin(object):
 xadmin.site.register(Article,ArticleAdmin)
 xadmin.site.register(Menu,MenuAdmin)
 xadmin.site.register(Dir,DirAdmin)
+xadmin.site.register(SubDir,SubDirAdmin)
 

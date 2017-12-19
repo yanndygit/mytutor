@@ -9,7 +9,7 @@ from .models import Article
 class DirView(View):
     def get(self, request):
         all_article = Article.objects.get(id=1)
-        return render(request, "article.html",{
+        return render(request, "wiki.html",{
             "article":all_article
         })
         #course = Course.objects.get(id=int(course_id))
