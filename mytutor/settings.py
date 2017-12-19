@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'article',
     'xadmin',
     'crispy_forms',
-    'DjangoUeditor'
+    'DjangoUeditor',
 ]
 
 MIDDLEWARE_CLASSES = [
