@@ -22,7 +22,7 @@ from article.views import DirView
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^$', TemplateView.as_view(template_name="article.html"), name ="article"),
-    url(r'^article/',DirView.as_view(),name="article"),
+    url(r'^article/(?P<article_id>\d+)/(?P<menu_id>\d+)',DirView.as_view(),name="article"),
     url(r'^ueditor/', include('DjangoUeditor.urls')),
     url(r'^wiki$', TemplateView.as_view(template_name="wiki.html"), name="wiki"),
 ]

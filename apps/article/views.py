@@ -8,11 +8,14 @@ from .models import Article,Menu,Dir,SubDir,DirRelation,SubDirRelation
 # Create your views here.
 class DirView(View):
 
-    def get(self, request):
-        all_article = Article.objects.get(id=3)
+    def get(self, request,article_id=1,menu_id=1):
+        all_subDir={}
+        all_article = Article.objects.get(id=article_id)
         all_menu = Menu.objects.all()
-        all_dir = Dir.objects.filter(menu_id=5)
-        all_subDir = SubDir.objects.filter(menu_id=1,dir_id=2)
+        all_dir = Dir.objects.filter(menu_id=menu_id)
+        for dir in all_dir:
+            all_subDir[dir] = SubDir.objects.filter(menu_id=menu_id,dir_id=dir.id)
+
         dir_relation = DirRelation.objects.all()
         subDir_relation = SubDirRelation.objects.all()
 

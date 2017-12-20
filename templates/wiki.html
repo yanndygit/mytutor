@@ -186,17 +186,19 @@
                             <span id="cangkuguanli" class="glyphicon glyphicon-minus"
                                   aria-hidden="true"></span> {{ dir.name }}
                         </a>
-                        {% for sub_dir in all_subDir %}
-                            <div id="item-cangku" class="panel-collapse collapse in">
-                                <div class="item-body">
-                                    <ul class="list-unstyled">
-                                        <li class="item-second"
-                                            style="margin-left:25px;margin-top:5px;margin-bottom:2px"><a
-                                                href="">{{ sub_dir.name }}</a></li>
-                                    </ul>
+                            {% for sub_dir in all_subDir %}
+                                {%  if sub_dir.dir_id != dir.id %}
+                                <div id="item-cangku" class="panel-collapse collapse in">
+                                    <div class="item-body">
+                                        <ul class="list-unstyled">
+                                            <li class="item-second"
+                                                style="margin-left:25px;margin-top:5px;margin-bottom:2px"><a
+                                                    href="">{{ sub_dir.name }} 'dir_id:' {{ sub_dir.dir_id }} 'dir.id:' {{dir.id }}</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                                {% endif %}
+                            {% endfor %}
                     {% endfor %}
 
                 </div>
