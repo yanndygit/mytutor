@@ -177,81 +177,34 @@
     <div class="row" style="margin-left:5px;margin-right:5px;">
         <nav class="col-md-3 sidebar-nav visible-md visible-lg" id="sidebar-wrapper">
             <div class="panel-group clear" id="accordion">
-                <div class="panel-heading">
-
-                    {% for dir in all_dir %}
-
-                        <a data-toggle="collapse" data-parent="#accordion" href="#item-cangku" id="headcangku"
+                {% for dir in all_dir %}
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#item-cangku" id="dir-{{ dir.id }}"
                            class="side-nav-item item-title">
-                            <span id="cangkuguanli" class="glyphicon glyphicon-minus"
+                            <span id="flag-dir-{{ dir.id }}" class="glyphicon glyphicon-minus"
                                   aria-hidden="true"></span> {{ dir.name }}
                         </a>
-                            {% for sub_dir in all_subDir %}
-                                {%  if sub_dir.dir_id != dir.id %}
-                                <div id="item-cangku" class="panel-collapse collapse in">
+                        {% for key,value in all_subDir.items %}
+                            {% if key == dir and value|length > 0 %}
+                                <div id="item-{{ dir.id }}" class="panel-collapse collapse in">
                                     <div class="item-body">
                                         <ul class="list-unstyled">
-                                            <li class="item-second"
-                                                style="margin-left:25px;margin-top:5px;margin-bottom:2px"><a
-                                                    href="">{{ sub_dir.name }} 'dir_id:' {{ sub_dir.dir_id }} 'dir.id:' {{dir.id }}</a></li>
+                                            {% for subdir in value %}
+                                                <li class="item-second"
+                                                    style="margin-left:25px;margin-top:5px;margin-bottom:2px">
+                                                    <a href="">{{ subdir }}  </a>
+                                                </li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
-                                {% endif %}
-                            {% endfor %}
-                    {% endfor %}
-
-                </div>
-
-                {#                <div class="panel-heading">#}
-                {##}
-                {#                    <a data-toggle="collapse" data-parent="#accordion" href="#item-cangku" id="headcangku"#}
-                {#                       class="side-nav-item item-title">#}
-                {#                        <span id="cangkuguanli" class="glyphicon glyphicon-minus" aria-hidden="true"></span> 仓库管理#}
-                {#                    </a>#}
-                {#                    <div id="item-cangku" class="panel-collapse collapse in">#}
-                {#                        <div class="item-body">#}
-                {#                            <ul class="list-unstyled">#}
-                {#                                <li class="item-second" style="margin-left:25px;margin-top:5px;margin-bottom:2px"><a#}
-                {#                                        href="">产品库存</a></li>#}
-                {#                                <li class="item-second" style="margin-left:25px;margin-top:7px;margin-bottom:2px"><a#}
-                {#                                        href="">原料库存</a></li>#}
-                {#                            </ul>#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {#                    </div>#}
-                {#                    <div class="panel-heading ">#}
-                {#                        <a data-toggle="collapse" data-parent="#accordion" href="#item-caiwu" id="headcaiwu" class="side-nav-item item-title collapsed">#}
-                {#                  <span  id="caiwuguanli" class="glyphicon glyphicon-plus" aria-hidden="true"></span>#}
-                {#      财务管理#}
-                {#      </a>#}
-                {#                        <div id="item-caiwu" class="panel-collapse collapse ">#}
-                {#                            <div class="item-body">#}
-                {#                                <ul class="list-unstyled">#}
-                {#                                    <li class="item-second" style="margin-left:25px;margin-top:5px;margin-bottom:2px"><a href="">产品库存</a></li>#}
-                {#                                    <li class="item-second" style="margin-left:25px;margin-top:7px;margin-bottom:2px"><a href="">原料库存</a></li>#}
-                {#                                </ul>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </div>#}
-                {#                    <div class="panel-heading ">#}
-                {#                        <a data-toggle="collapse" data-parent="#accordion" href="#item-renshi" id="headrenshi" class="side-nav-item item-title collapsed ">#}
-                {#                  <span  id = "renshiguanli" class="glyphicon glyphicon-plus" aria-hidden="true"></span>#}
-                {#      人事管理#}
-                {#      </a>#}
-                {#                        <div id="item-renshi" class="panel-collapse collapse ">#}
-                {#                            <div class="item-body">#}
-                {#                                <ul class="list-unstyled">#}
-                {#                                    <li class="item-second" style="margin-left:25px;margin-top:5px;margin-bottom:2px"><a href="">产品库存</a></li>#}
-                {#                                    <li class="item-second" style="margin-left:25px;margin-top:7px;margin-bottom:2px"><a href="">原料库存</a></li>#}
-                {#                                </ul>#}
-                {#                            </div>#}
-                {#                        </div>#}
-                {#                    </div>#}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
         </nav>
         <!-- 右边文章区域 -->
-
         <div id="page-content-wrapper">
             <div class="col-md-9">
                 <div class="divider">
@@ -264,90 +217,91 @@
                 {% endautoescape %}
             </div>
         </div>
-
-
-        {#        <div id="page-content-wrapper">#}
-        {#            <div class="col-md-9">#}
-        {#                <div class="divider">#}
-        {#                    <h1 style='font-size:20px'>标题</h1>#}
-        {#                    <p>阅读:<span>12345</span></p>#}
-        {#                </div>#}
-        {#                <hr class="feature-divider">#}
-        {#                <p><img data-original-src="//upload-images.jianshu.io/upload_images/3778306-4191cc77c1f15c77.jpeg"#}
-        {#                        data-original-width="800" data-original-height="313" data-original-format="image/jpeg"#}
-        {#                        data-original-filesize="40684" class=""#}
-        {#                        src="http://upload-images.jianshu.io/upload_images/3778306-4191cc77c1f15c77.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700"#}
-        {#                        style="box-sizing: border-box; border: 0px; vertical-align: middle; max-width: 100%; height: auto; cursor: zoom-in; transition: all 0.15s linear; z-index: 100; filter: blur(0px); opacity: 1;"/>#}
-        {#                </p>#}
-        {#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
-        {#                    一个网站除了满足业务功能，还要满足性能需求，如果性能不好，随着用户的增长将出现性能瓶颈，对用户最直接的感官影响就是响应变慢，一般2秒以内算是比较好的体验，超过5秒体验就比较差了，极端情况下用户并发高的情况下，网站直接拒绝服务，严重影响业务运营。</p>#}
-        {#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
-        {#                    <span style="box-sizing: border-box; font-weight: 700;">网站性能指标</span>#}
-        {#                    <br style="box-sizing: border-box;"/>对于网站的性能指标，重要的是&nbsp;<span#}
-        {#                        style="box-sizing: border-box; font-weight: 700;">响应时间、吞吐量、并发数</span>。</p>#}
-        {#                <ul style="box-sizing: border-box; margin-bottom: 20px; padding: 0px; margin-left: 22px; word-break: break-word !important;"#}
-        {#                    class=" list-paddingleft-2">#}
-        {#                    <li>#}
-        {#                        <p><span style="box-sizing: border-box; font-weight: 700;">响应时间</span>是一次请求从发送请求到收到响应的总时间，直观的反映系统的快慢。#}
-        {#                        </p>#}
-        {#                    </li>#}
-        {#                    <li>#}
-        {#                        <p><span style="box-sizing: border-box; font-weight: 700;">吞吐量</span>是单位时间处理的请求数，通常用TPS来表示，是系统容量的直观体现。#}
-        {#                        </p>#}
-        {#                    </li>#}
-        {#                    <li>#}
-        {#                        <p><span style="box-sizing: border-box; font-weight: 700;">并发数</span>是系统同时能处理的请求数，对于同时在线用户数高的，短时间有大量用户使用的，譬如抢购类网站要求高，如果要让用户在短时间内都能访问到系统，需要有极高的并发能力支持。#}
-        {#                        </p>#}
-        {#                    </li>#}
-        {#                </ul>#}
-        {#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
-        {#                    可以用高速公路收费站来类比，响应时间就是收费窗口处理收费事件的时间，吞吐量是单位时间收费窗口总共收了多少辆车，并发量就是总共有多少个收费通道。</p>#}
-        {#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
-        {#                    这几个指标之间的关系是什么呢？</p>#}
-        {#                <blockquote#}
-        {#                        style="box-sizing: border-box; padding: 20px; margin: 0px 0px 25px; border-left: 6px solid rgb(180, 180, 180); background-color: rgb(247, 247, 247); line-height: 30px; word-break: break-word !important;">#}
-        {#                    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.7; word-break: break-word !important;">#}
-        {#                        假如该收费站收一笔费用耗时30秒（RT=30s），共有5个窗口(p=5)，那么正常情况下1分钟该收费站能处理10个收费请求【v= (P/RT)*60s=10】，即吞吐量是10次/分钟。</p>#}
-        {#                </blockquote>#}
-        {#                <blockquote#}
-        {#                        style="box-sizing: border-box; padding: 20px; margin: 0px 0px 25px; border-left: 6px solid rgb(180, 180, 180); background-color: rgb(247, 247, 247); line-height: 30px; word-break: break-word !important;">#}
-        {#                    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.7; word-break: break-word !important;">#}
-        {#                        如果前端每隔30秒有5辆车（即每分钟有10辆车）进入高速公路，该收费站将满负荷运行，收费人员馬不停蹄，车辆没有积压。如果每分钟有20辆车进入高速公路，那么第一分钟进入收费站的20辆车将有10辆车积压等待30秒，第二分钟进入的20辆车将最多等待90秒，以此类推，积压将越来越多，高速公路上将慢慢排队成长龙，车辆通过收费站的时长将越来越长，对应的是网站收到响应时间越来越长，直到超时不可用。</p>#}
-        {#                </blockquote>#}
-        {#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
-        {#                    通过apache bench#}
-        {#                    工具ab测试网站性能指标可以看出，并发越大响应时间越长。从曲线看并发到70个响应时间就开始恶化，最大支持的并发就是70条每秒，正常响应时间是5.87毫秒，吞吐量TPS是170。此时的CPU利用率，链接数相对平稳，未达到资源的瓶颈。</p>#}
-        {#                <p><img data-original-src="//upload-images.jianshu.io/upload_images/3778306-01a52f0cd78212c8.png"#}
-        {#                        data-original-width="680" data-original-height="349" data-original-format="image/png"#}
-        {#                        data-original-filesize="39393" class=""#}
-        {#                        src="http://upload-images.jianshu.io/upload_images/3778306-01a52f0cd78212c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/680"#}
-        {#                        style="box-sizing: border-box; border: 0px; vertical-align: middle; max-width: 100%; height: auto; cursor: zoom-in; transition: all 0.15s linear; z-index: 100; filter: blur(0px); opacity: 1;"/>#}
-        {#                </p>#}
-        {#                <p>#}
-        {#                    <br/>#}
-        {#                </p>#}
-        {#                <hr class="feature-divider">#}
-        {#                <div class=".container-fluid">#}
-        {#                    <div class="row">#}
-        {#                        <div class="col-md-8 col-md-offset-1 col-xs-8 col-xs-offset-1"><a href="#"><i#}
-        {#                                class="glyphicon glyphicon-chevron-left"></i> 上一页</a></div>#}
-        {#                        <div class="col-md-3 col-xs-3"><a href="#">下一页 <i class="glyphicon glyphicon-chevron-right"></i></a>#}
-        {#                        </div>#}
-        {#                    </div>#}
-        {#                </div>#}
-        {#            </div>#}
-        {#        </div>#}
     </div>
-    <!-- footer -->
-    <!-- <hr class="feature-divider">
-    <div class="row">
-           <footer>
-        <p class="col-xs-4 col-xs-offset-0 col-sm-4 col-md-6 col-md-offset-2"><span style="color:#428bca">2014 @teqstack</span></p>
-        <p class="col-xs-4  col-md-4"><a herf="#top">回到顶部</a></p>
-    </footer>
-
-    </div> -->
 </div>
+
+
+{#        <div id="page-content-wrapper">#}
+{#            <div class="col-md-9">#}
+{#                <div class="divider">#}
+{#                    <h1 style='font-size:20px'>标题</h1>#}
+{#                    <p>阅读:<span>12345</span></p>#}
+{#                </div>#}
+{#                <hr class="feature-divider">#}
+{#                <p><img data-original-src="//upload-images.jianshu.io/upload_images/3778306-4191cc77c1f15c77.jpeg"#}
+{#                        data-original-width="800" data-original-height="313" data-original-format="image/jpeg"#}
+{#                        data-original-filesize="40684" class=""#}
+{#                        src="http://upload-images.jianshu.io/upload_images/3778306-4191cc77c1f15c77.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700"#}
+{#                        style="box-sizing: border-box; border: 0px; vertical-align: middle; max-width: 100%; height: auto; cursor: zoom-in; transition: all 0.15s linear; z-index: 100; filter: blur(0px); opacity: 1;"/>#}
+{#                </p>#}
+{#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
+{#                    一个网站除了满足业务功能，还要满足性能需求，如果性能不好，随着用户的增长将出现性能瓶颈，对用户最直接的感官影响就是响应变慢，一般2秒以内算是比较好的体验，超过5秒体验就比较差了，极端情况下用户并发高的情况下，网站直接拒绝服务，严重影响业务运营。</p>#}
+{#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
+{#                    <span style="box-sizing: border-box; font-weight: 700;">网站性能指标</span>#}
+{#                    <br style="box-sizing: border-box;"/>对于网站的性能指标，重要的是&nbsp;<span#}
+{#                        style="box-sizing: border-box; font-weight: 700;">响应时间、吞吐量、并发数</span>。</p>#}
+{#                <ul style="box-sizing: border-box; margin-bottom: 20px; padding: 0px; margin-left: 22px; word-break: break-word !important;"#}
+{#                    class=" list-paddingleft-2">#}
+{#                    <li>#}
+{#                        <p><span style="box-sizing: border-box; font-weight: 700;">响应时间</span>是一次请求从发送请求到收到响应的总时间，直观的反映系统的快慢。#}
+{#                        </p>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <p><span style="box-sizing: border-box; font-weight: 700;">吞吐量</span>是单位时间处理的请求数，通常用TPS来表示，是系统容量的直观体现。#}
+{#                        </p>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <p><span style="box-sizing: border-box; font-weight: 700;">并发数</span>是系统同时能处理的请求数，对于同时在线用户数高的，短时间有大量用户使用的，譬如抢购类网站要求高，如果要让用户在短时间内都能访问到系统，需要有极高的并发能力支持。#}
+{#                        </p>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
+{#                    可以用高速公路收费站来类比，响应时间就是收费窗口处理收费事件的时间，吞吐量是单位时间收费窗口总共收了多少辆车，并发量就是总共有多少个收费通道。</p>#}
+{#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
+{#                    这几个指标之间的关系是什么呢？</p>#}
+{#                <blockquote#}
+{#                        style="box-sizing: border-box; padding: 20px; margin: 0px 0px 25px; border-left: 6px solid rgb(180, 180, 180); background-color: rgb(247, 247, 247); line-height: 30px; word-break: break-word !important;">#}
+{#                    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.7; word-break: break-word !important;">#}
+{#                        假如该收费站收一笔费用耗时30秒（RT=30s），共有5个窗口(p=5)，那么正常情况下1分钟该收费站能处理10个收费请求【v= (P/RT)*60s=10】，即吞吐量是10次/分钟。</p>#}
+{#                </blockquote>#}
+{#                <blockquote#}
+{#                        style="box-sizing: border-box; padding: 20px; margin: 0px 0px 25px; border-left: 6px solid rgb(180, 180, 180); background-color: rgb(247, 247, 247); line-height: 30px; word-break: break-word !important;">#}
+{#                    <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 0px; line-height: 1.7; word-break: break-word !important;">#}
+{#                        如果前端每隔30秒有5辆车（即每分钟有10辆车）进入高速公路，该收费站将满负荷运行，收费人员馬不停蹄，车辆没有积压。如果每分钟有20辆车进入高速公路，那么第一分钟进入收费站的20辆车将有10辆车积压等待30秒，第二分钟进入的20辆车将最多等待90秒，以此类推，积压将越来越多，高速公路上将慢慢排队成长龙，车辆通过收费站的时长将越来越长，对应的是网站收到响应时间越来越长，直到超时不可用。</p>#}
+{#                </blockquote>#}
+{#                <p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 25px; word-break: break-word !important;">#}
+{#                    通过apache bench#}
+{#                    工具ab测试网站性能指标可以看出，并发越大响应时间越长。从曲线看并发到70个响应时间就开始恶化，最大支持的并发就是70条每秒，正常响应时间是5.87毫秒，吞吐量TPS是170。此时的CPU利用率，链接数相对平稳，未达到资源的瓶颈。</p>#}
+{#                <p><img data-original-src="//upload-images.jianshu.io/upload_images/3778306-01a52f0cd78212c8.png"#}
+{#                        data-original-width="680" data-original-height="349" data-original-format="image/png"#}
+{#                        data-original-filesize="39393" class=""#}
+{#                        src="http://upload-images.jianshu.io/upload_images/3778306-01a52f0cd78212c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/680"#}
+{#                        style="box-sizing: border-box; border: 0px; vertical-align: middle; max-width: 100%; height: auto; cursor: zoom-in; transition: all 0.15s linear; z-index: 100; filter: blur(0px); opacity: 1;"/>#}
+{#                </p>#}
+{#                <p>#}
+{#                    <br/>#}
+{#                </p>#}
+{#                <hr class="feature-divider">#}
+{#                <div class=".container-fluid">#}
+{#                    <div class="row">#}
+{#                        <div class="col-md-8 col-md-offset-1 col-xs-8 col-xs-offset-1"><a href="#"><i#}
+{#                                class="glyphicon glyphicon-chevron-left"></i> 上一页</a></div>#}
+{#                        <div class="col-md-3 col-xs-3"><a href="#">下一页 <i class="glyphicon glyphicon-chevron-right"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+<!-- footer -->
+<!-- <hr class="feature-divider">
+<div class="row">
+       <footer>
+    <p class="col-xs-4 col-xs-offset-0 col-sm-4 col-md-6 col-md-offset-2"><span style="color:#428bca">2014 @teqstack</span></p>
+    <p class="col-xs-4  col-md-4"><a herf="#top">回到顶部</a></p>
+</footer>
+
+</div> -->
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 <script>
